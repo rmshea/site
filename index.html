@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- Meta information -->
+  <title>
+    Ryan M. Shea
+  </title>
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <link
+    rel="preload"
+    href="/css/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff"
+    as="font"
+    type="font/woff"
+    crossorigin
+  />
+
+  <!-- https://instant.page/ -->
+  <script src="/scripts/instantpage-3.0.0.js" type="module" defer></script>
+
+  
+
+  <!--  -->
+  
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#fcfcfc" />
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#fcfcfc" />
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fcfcfc" />
+  
+
+  <!-- <link rel="canonical" href="https://soreine.dev/">
+  <link rel="alternate" type="application/rss+xml" title="Soreine" href="https://soreine.dev/feed.xml" />
+  -->
+
+  <!-- OG attributes -->
+  <meta
+    name="description"
+    content="Ryan M. Shea is a digital wanderer that struggles to write bios."
+  />
+  
+  <meta property="og:title" content="Ryan M. Shea" />
+  <meta property="og:url" content="https://ry.sh/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Ryan M. Shea is a digital wanderer that struggles to write bios." />
+</head>
+
+  <body>
+    <article class="">
+      <!-- https://github.com/git-no/jekyll-breadcrumbs -->
+
+<section>
+  <p>
+    Rachel,  
+    <span data-reveal="masthead">dear:</span>
+    </p>
+    <p>
+    <span data-from="masthead">
+      My heart is torn with conflicting emotions. Your mother and Millie, Sam and Lena, came down from Newburgh <span data-reveal="me">yesterday</span>, expecting to see you.
+    </span>
+    <span data-from="me">
+      Of course after mutual explanations, they were <span data-reveal="small">satisfied</span>.
+    </span>
+  </p>
+  <p data-from="small">
+    I stayed overnight and we had a pleasant evening. Talked of little else than you and the babies. I left them at the hotel and hurried to catch
+the train which I did with <span data-reveal="focus">five minutes</span> to spare.
+    <span data-from="focus">
+      Just as I took my seat a porter arrived from the hotel and thrust the cable into my hands that for a time  <span data-reveal="mindful">announcing</span> the birth of twin girls.
+    </span>
+  </p>
+  <p data-from="mindful">
+    I could not realize the truth and now that I have collected my thoughts, I am sonsuned by rage and anxiety, rage that I should have allowed the necessity of my business to take me away from you and anxiety lest my absence may bave a bad effect on you. I can only gather strength to go on from the knowledge that Lyon will be loyal to his promise to let me know the <span data-reveal="ryan">truth</span>.
+    </p>
+    <p>
+    <span data-from="ryan"><span data-reveal="breath">Oh.</span></span>
+    <span data-from="breath">
+      <span data-reveal="few-times">Are you looking for Ryan's website?</span>
+    </span>
+    <span data-from="few-times">
+      Sorry. Uh — we might have jumped into
+      <span data-reveal="senses">things</span>.
+    </span>
+    </p>
+    <p>
+    <span data-from="senses">
+      Ryan is normally reachable at <a href="mailto:ryan@nation.io">ryan@nation.io</a>. He's also on <a href="https://twitter.com/clockwrrk" target="_blank">Twitter</a>.
+      What does Ryan<span data-reveal="skin">do</span>?
+    </span>
+    <span data-from="skin">
+      Ryan normally meanders about and tries to do ridiculous things at <a href="https://nation.io" target="_blank">NATION</a>. Before that, he was the court jester at Solana Labs, the organization that built the <a href="https://solana.com" target="_blank">Solana</a> network.
+    </span>
+  </p>
+
+</section>
+
+    </article>
+
+    
+    <!-- Must be in the page, to block rendering, and after the rest of the content, to modify it -->
+    <!-- Inline this script to optimize fetching, and beginning of execution. It must be added in at the end of HTML body to block rendering -->
+<script>
+  const REVEAL_TIMEOUT = 200; // same than underline fade-out time
+
+  function setRevealed(elements, value) {
+    elements.forEach((el) => {
+      el.setAttribute("data-revealed", value);
+    });
+  }
+  const links = document.querySelectorAll("[data-reveal]");
+
+  links.forEach((link) => {
+    const key = link.getAttribute("data-reveal");
+    const memo = link.hasAttribute("data-memo");
+    const reveals = document.querySelectorAll('[data-from="' + key + '"]');
+
+    let revealTimeout = null;
+
+    const reveal = () => {
+      if (memo) {
+        localStorage.setItem("revealed" + key, true);
+      }
+      setRevealed([link, ...reveals], "true");
+    };
+
+    const onEnter = (event) => {
+      revealTimeout = setTimeout(reveal, REVEAL_TIMEOUT);
+    };
+
+    const onLeave = (event) => {
+      clearTimeout(revealTimeout);
+    };
+
+    if (memo) {
+      const wasRevealed = localStorage.getItem("revealed" + key);
+      if (wasRevealed) return;
+    }
+
+    setRevealed([link, ...reveals], "false");
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      reveal();
+    });
+    link.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      reveal();
+    });
+    link.addEventListener("mouseenter", onEnter);
+    link.addEventListener("mouseleave", onLeave);
+  });
+</script>
+ 
+  </body>
+</html>
